@@ -1,0 +1,12 @@
+.ourServices {
+    margin-top: 8rem;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 2rem;
+}
+
+@media(max-width:767px) {
+    .ourServices {
+        grid-template-columns: 1fr;
+    }
+}

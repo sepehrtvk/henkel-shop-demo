@@ -1,0 +1,32 @@
+.bottomFooter {
+    background: linear-gradient(180deg, #fff , #B4B4B4);
+    margin-top: 5rem;
+}
+
+.footerLinks {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footerLinks h4 {
+    color: #0A1E35;
+    font-size: 1.1rem;
+    margin-bottom: .5rem;
+}
+
+.footerLinks li a {
+    display: inline-block;
+    margin-bottom: 8px;
+    color: #666;
+}
+
+.copyRight {
+    padding: 10px 0;
+    text-align: center;
+    background-color: #929292;
+    color: #0A1E35;
+}
+
+@media (max-width:560px) {
+}

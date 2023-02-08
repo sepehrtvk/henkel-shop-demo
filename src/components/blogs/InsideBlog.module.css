@@ -1,0 +1,48 @@
+.insideBlog {
+    padding: 2rem;
+    box-shadow: 0 5px 25px rgba(120, 120, 120, .3);
+    margin: 2rem 0;
+    border-radius: 15px;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1rem 0;
+}
+
+.info span {
+    display: inline-block;
+    padding: 8px 20px;
+    background-color: #e8e8e8;
+    border-radius: 10px;
+    color: #666;
+}
+
+.image {
+    max-width: 100%;
+    display: block;
+    margin: 2rem auto;
+    border-radius: 20px;
+}
+
+.title {
+    color: #0a1e35;
+    margin-bottom: 1rem;
+}
+
+.description{
+    color: #666;
+    line-height: 2.2;
+}
+
+@media (max-width:560px) {
+    .info span {
+        padding: 2px 5px;
+        border-radius: 10px;
+        color: #666;
+        font-size: 12px;
+        background-color: transparent;
+    }
+}

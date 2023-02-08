@@ -1,0 +1,90 @@
+.formBox {
+  padding: 2rem;
+  box-shadow: 0 5px 20px rgba(120, 120, 120, 0.3);
+  margin: 2rem 0;
+  border-radius: 15px;
+}
+
+.formBox h3 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #666;
+}
+
+.row {
+  display: flex;
+  margin-bottom: 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.field {
+  flex: 0 0 48%;
+}
+
+.field label {
+  color: #666;
+  display: block;
+  margin-bottom: 0.4rem;
+  cursor: pointer;
+}
+
+.field input {
+  color: #666;
+  outline: none;
+  width: 100%;
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.formBox textarea {
+  color: #666;
+  outline: none;
+  width: 100%;
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  resize: none;
+}
+
+.button {
+    text-align: end;
+}
+
+.submit {
+    background-color: #5463FF;
+    width: 200px;
+    height: 40px;
+    font-size: 1.1rem;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.submit:hover {
+    transform: rotate(10deg);
+}
+
+@media(max-width:560px) {
+    .field {
+        flex: 0 0 100%;
+        margin-bottom: 1rem;
+    }
+
+    .row {
+        margin-bottom: 0;
+    }
+
+    .submit {
+        width: 100%;
+    }
+}
+
+
+
+

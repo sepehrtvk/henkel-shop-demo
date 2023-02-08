@@ -1,0 +1,87 @@
+.comments {
+  padding: 2rem;
+  box-shadow: 0 5px 20px rgba(120, 120, 120, 0.3);
+  margin-top: 2rem;
+  border-radius: 15px;
+}
+
+.comments h3 {
+  color: #5463ff;
+  margin-bottom: 1rem;
+}
+
+.allComments {
+    text-align: center;
+    font-size: 1rem;
+    opacity: .3;
+}
+
+.sendComments {
+    padding: 1rem;
+}
+
+.rate {
+    display: flex;
+    flex-direction: column;
+}
+
+.rate p {
+    color: #555;
+}
+
+.rate i {
+    color: #ccc;
+    cursor: pointer;
+}
+
+.field {
+    margin: 1rem 0;
+    width: 50%;
+    display: inline-block;
+    padding-left: 10px;
+}
+
+.sendComments input {
+    padding: 8px 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    outline: none;
+    color: #444;
+    font-size: .9rem;
+}
+
+.sendComments textarea {
+    resize: none;
+    width: 99%;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    color: #444;
+    font-size: .9rem;
+    padding: 8px 10px;
+    outline: none;
+}
+
+.button {
+    margin-top: 1rem;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.button button {
+    width: 130px;
+    height: 40px;
+    font-size: 1rem;
+    background-color: #5463ff;
+    border: 1px solid #5463ff;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    font-weight: bold;
+}
+
+.button button:hover{
+    color: #5463ff;
+    background-color: #fff;
+}

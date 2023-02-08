@@ -1,0 +1,23 @@
+.address{
+    display: flex;
+    padding: 2rem 1rem;
+    box-shadow: 0 5px 20px rgba(120, 120, 120, .3);
+    border-radius: 15px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.address p {
+    color: #666;
+    font-family: iranyekan;
+}
+
+@media (max-width:560px) {
+    .address {
+        flex-direction: column;
+    }
+    .address p:not(:last-child) {
+        margin-bottom: 1rem;
+    }
+}
+
