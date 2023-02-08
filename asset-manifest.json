@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/henkel-shop-demo/static/css/main.44894421.css",
-    "main.js": "/henkel-shop-demo/static/js/main.6e1c1430.js",
+    "main.js": "/henkel-shop-demo/static/js/main.7fac8ee4.js",
     "static/media/3.jpg": "/henkel-shop-demo/static/media/3.c7aca6e04f77bb7a45ea.jpg",
     "static/media/2.jpg": "/henkel-shop-demo/static/media/2.f52267aea65e3b560740.jpg",
     "static/media/1.jpg": "/henkel-shop-demo/static/media/1.8107ebdcd07771d251b1.jpg",
@@ -19,15 +19,15 @@
     "static/media/zara.svg": "/henkel-shop-demo/static/media/zara.4a5bf47bbe600f97efd79d81891a65a9.svg",
     "static/media/nike.svg": "/henkel-shop-demo/static/media/nike.811d61411ea901e4122044c55186acf3.svg",
     "index.html": "/henkel-shop-demo/index.html",
-    "static/media/shopping-bag.svg": "/henkel-shop-demo/static/media/shopping-bag.4cd8bcc53f52fa064ff360e45c8bbdea.svg",
+    "static/media/shopping-bag.svg": "/henkel-shop-demo/static/media/shopping-bag.d3e1addf6fc91f2aa610d95f2f9f4143.svg",
     "static/media/cross.svg": "/henkel-shop-demo/static/media/cross.c2ec146f3e728d30dff3a67a6c61ace2.svg",
-    "static/media/search.svg": "/henkel-shop-demo/static/media/search.f3ec1e86e4dc2b5a003301cb25029fea.svg",
+    "static/media/search.svg": "/henkel-shop-demo/static/media/search.5de686794f886ef70690fd33fc02247c.svg",
     "static/media/menu-burger.svg": "/henkel-shop-demo/static/media/menu-burger.60466b48851c6f3c8271284527fad27f.svg",
     "main.44894421.css.map": "/henkel-shop-demo/static/css/main.44894421.css.map",
-    "main.6e1c1430.js.map": "/henkel-shop-demo/static/js/main.6e1c1430.js.map"
+    "main.7fac8ee4.js.map": "/henkel-shop-demo/static/js/main.7fac8ee4.js.map"
   },
   "entrypoints": [
     "static/css/main.44894421.css",
-    "static/js/main.6e1c1430.js"
+    "static/js/main.7fac8ee4.js"
   ]
 }
