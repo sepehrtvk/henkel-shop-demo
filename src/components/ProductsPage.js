@@ -37,7 +37,7 @@ const ProductsPage = () => {
         />
         <ProductDetails data={product} />
         <ProductInfo product={product} />
-        <Comments />
+        {/* <Comments /> */}
         {/* <RelatedProduct data={relatedPro} /> */}
       </div>
     </div>

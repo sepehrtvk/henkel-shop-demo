@@ -1,54 +1,10 @@
-.products {
-  padding: 1rem;
-  border: 1px solid #ccc;
-  margin: 1rem 0;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.info {
-  display: flex;
-}
-
-.image img {
-  width: 120px;
-  margin-left: 18px;
-  border-radius: 8px;
-}
-
-.title {
-  color: #0a1e35;
-  font-weight: 500;
-}
-
-.sizeOrColo {
-  color: #666;
-  font-size: 15px;
-}
-
-.prices {
-  margin-top: 10px;
-}
-
-.oldPrice {
-  color: #ccc;
-  text-decoration: line-through;
-  font-family: iranyekan;
-}
-
-.newPrice {
-  color: #fa4c4c;
-  font-family: iranyekan;
-}
-
 .plusMinusProduct {
   padding: 8px 20px;
   border-radius: 10px;
   border: 1px solid #ccc;
   width: fit-content;
   background-color: #f5f5f5;
+  display: flex;
 }
 
 .trashBtn {
@@ -89,20 +45,4 @@
   .image img {
     width: 80px;
   }
-}
-
-.details {
-  /* border-left: 1px solid gray; */
-  padding-left: 20px;
-}
-
-.extra {
-  border-right: 1px solid gray;
-  padding-right: 20px;
-  padding-left: 20px;
-}
-
-.extraColor {
-  color: #666;
-  font-family: iranyekan;
 }

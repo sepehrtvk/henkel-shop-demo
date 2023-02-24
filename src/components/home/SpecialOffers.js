@@ -15,10 +15,14 @@ import { ProductsContext } from "../../context/ProductsContextProvider";
 
 //Components
 import ProductCard from "../shared/ProductCard";
+import AuthContext from "../../context/auth-context";
 
 const SpecialOffers = () => {
   const data = useContext(ProductsContext);
-  // const specialPro = data.filter((item) => item.discount > 0);
+
+  const authCtx = useContext(AuthContext);
+  if (!authCtx.isLoggedIn) return null;
+
   const specialPro = data;
   return (
     <div className='carousel-slider'>

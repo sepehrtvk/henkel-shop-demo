@@ -44,12 +44,13 @@ const Shop = () => {
     }
     if (state.sortBy === "price") {
       newProducts = newProducts.sort(
-        (a, b) => parseFloat(a.price) - parseFloat(b.price)
+        (a, b) => parseFloat(a.finalPrice) - parseFloat(b.finalPrice)
       );
     }
     if (state.sortBy === "sells") {
       newProducts = newProducts.sort(
-        (a, b) => parseFloat(b.sells) - parseFloat(a.sells)
+        (a, b) =>
+          parseFloat(b.consumerUnitPrice) - parseFloat(a.consumerUnitPrice)
       );
     }
     if (state.search.length) {

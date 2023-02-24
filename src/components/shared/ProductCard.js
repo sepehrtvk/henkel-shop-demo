@@ -8,11 +8,21 @@ import styles from "./ProductCard.module.css";
 import { discountHandler } from "../../helper/function";
 import { rateHandler } from "../../helper/function";
 
+import noImage from "../../assets/img/no-image.jpeg";
 const ProductCard = ({ data }) => {
   return (
     <div className={styles.productCard}>
       <div className={styles.cardImage}>
-        <img src={"http://5.202.179.236:8282" + data.image} alt='photo' />
+        {data.image && (
+          <img
+            src={"http://77.238.123.10:12367" + data.image}
+            alt='photo'
+            height={"250px"}
+          />
+        )}
+
+        {!data.image && <img src={noImage} alt='photo' height={"260px"} />}
+
         {data.discount > 0 && (
           <span className={styles.discount}>{data.discount}%</span>
         )}

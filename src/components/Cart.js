@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
@@ -15,9 +15,32 @@ import { CartContextProvider } from "../context/CartContext";
 //Images
 import cartEmpty from "../assets/img/empty-cart.svg";
 import { notify } from "../helper/function";
+import { getBasket } from "./basket/BasketService";
+import AuthContext from "../context/auth-context";
+import Loading from "./shared/Loading";
 
 const Cart = () => {
   const { state, dispatch } = useContext(CartContextProvider);
+  const authCtx = useContext(AuthContext);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const getBasketFunction = async () => {
+      setIsLoading(true);
+      const response = await getBasket({
+        CustomerId: localStorage.getItem("CustomerId"),
+        CustomerGroupId: localStorage.getItem("CustomerGroupId"),
+      });
+      response.data[0].items.map((item) => {
+        if (item.qty > 0) dispatch({ type: "ADD_QTY", payload: item });
+      });
+      setIsLoading(false);
+    };
+    if (authCtx.isLoggedIn) getBasketFunction();
+    else dispatch({ type: "CHECKED_OUT" });
+  }, []);
+  if (isLoading) return <Loading />;
+
   return (
     <div className='container'>
       <div className={styles.cartPage}>
@@ -31,8 +54,8 @@ const Cart = () => {
             {state.selectedItem.length ? (
               state.selectedItem.map((product) => (
                 <CartProducts
-                  key={product.id}
-                  productData={product}
+                  key={product.product.productId}
+                  productData={product.product}
                   dispatch={dispatch}
                   state={state}
                 />
@@ -52,6 +75,7 @@ const Cart = () => {
               data={state}
               dispatch={dispatch}
               notify={notify.bind(this, "checkout")}
+              nextPage='preview'
             />
           </div>
         )}

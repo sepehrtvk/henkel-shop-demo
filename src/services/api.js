@@ -1,6 +1,7 @@
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 
-const BASE_URL = "http://5.202.179.236:8282/api/PolProductsNo/get";
+const BASE_URL = "http://77.238.123.10:12367/api/PolProductsNo/get";
 
 const productsAPI = async () => {
   const specialUrl = BASE_URL + "?skip=0&take=10&showInMainPage=true";
@@ -10,8 +11,7 @@ const productsAPI = async () => {
     url: specialUrl,
     headers: {
       apptype: "b2b",
-      authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIxIiwidXNlcm5hbWUiOiJlYTM0NTFjNC1lYWZiLTRlMDUtODYyNS00ODc0NWU4NWFiZDMiLCJ1c2Vya2V5IjoiMDkxMjA1MzIxMjYiLCJhbGlhcyI6Itiz2b7Zh9ixINiz2b7Zh9ixIiwibmJmIjoxNjc1Njc2NTMzLCJleHAiOjE2NzgwOTU3MzMsImlhdCI6MTY3NTY3NjUzMywiaXNzIjoiaHR0cDovLzc3LjIzOC4xMjMuMTA6MTIzNjciLCJhdWQiOiJhcHBVc2VyIn0.IPYe0bHD09oRS5uaLqVeN_Ejsx2KCOlGyU-hrZ0-Fr0",
+      authorization: "Bearer " + localStorage.getItem("token"),
       language: "fa",
       connection: "keep-alive",
       "x-requested-with": "XMLHttpRequest",
@@ -21,4 +21,58 @@ const productsAPI = async () => {
   return response.data;
 };
 
-export { productsAPI };
+const loginByCode = async (body) => {
+  const loginUrl = "http://77.238.123.10:12367/api/poluser/signin";
+
+  const config = {
+    method: "post",
+    url: loginUrl,
+    headers: {
+      apptype: "b2b",
+      language: "fa",
+      connection: "keep-alive",
+      "x-requested-with": "XMLHttpRequest",
+    },
+    data: body,
+  };
+  const response = await axios(config);
+  return response.data;
+};
+const requestCode = async (body) => {
+  const codeUrl = "http://77.238.123.10:12367/api/poluser/requestcode";
+
+  const config = {
+    method: "post",
+    url: codeUrl,
+    headers: {
+      apptype: "b2b",
+      language: "fa",
+      connection: "keep-alive",
+      "x-requested-with": "XMLHttpRequest",
+    },
+    data: body,
+  };
+  const response = await axios(config);
+  return response.data;
+};
+
+const getUserInfo = async () => {
+  const codeUrl = "http://77.238.123.10:12367/api/poluser/userinfo";
+  const userId = jwt_decode(localStorage.getItem("token"));
+  const config = {
+    method: "get",
+    url: codeUrl,
+    headers: {
+      apptype: "b2b",
+      language: "fa",
+      authorization: "Bearer " + localStorage.getItem("token"),
+      connection: "keep-alive",
+      "x-requested-with": "XMLHttpRequest",
+    },
+    params: { id: userId.id },
+  };
+  const response = await axios(config);
+  return response.data;
+};
+
+export { productsAPI, loginByCode, requestCode, getUserInfo };

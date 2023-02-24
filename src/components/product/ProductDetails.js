@@ -9,6 +9,9 @@ import { CartContextProvider } from "../../context/CartContext";
 //Function
 import { quantityItem, isInCart } from "../../helper/function";
 
+import noImage from "../../assets/img/no-image.jpeg";
+import AddToBasket from "../basket/AddToBasket";
+
 const ProductDetails = ({ data }) => {
   const rateHandler = (rateCount) => {
     for (let i = 0; i < rateCount; i++) {
@@ -31,10 +34,13 @@ const ProductDetails = ({ data }) => {
   return (
     <div className={styles.productDetails}>
       <div className={styles.productImage}>
-        <img
-          src={"http://5.202.179.236:8282" + data.image}
-          alt='productImage'
-        />
+        {data.image && (
+          <img
+            src={"http://77.238.123.10:12367" + data.image}
+            alt='productImage'
+          />
+        )}
+        {!data.image && <img src={noImage} alt='productImage' />}
         <span className={styles.addToFavorite}>
           <i className='fas fa-heart'></i>
         </span>
@@ -49,7 +55,7 @@ const ProductDetails = ({ data }) => {
           <div className={styles.rate}>
             <div
               className={styles.rating}
-              style={{ width: `${rateHandler(data.rate)}` }}></div>
+              style={{ width: `${rateHandler(4)}` }}></div>
           </div>
           <div style={{ marginTop: "15px" }}>
             <span>موجودی : </span>
@@ -77,25 +83,25 @@ const ProductDetails = ({ data }) => {
                   : styles.addToCart
               }>
               {isInCart(state, data.productId) ? (
-                <button
-                  className={styles.smallBtn}
-                  onClick={() => dispatch({ type: "PLUS_ONE", payload: data })}>
-                  <i className='fas fa-plus'></i>
-                </button>
+                <AddToBasket
+                  dispatch={dispatch}
+                  state={state}
+                  productData={data}
+                />
               ) : (
                 <button
                   className={styles.addToCartBtn}
                   onClick={() =>
                     dispatch({
                       type: "ADD_ITEM",
-                      payload: data,
+                      payload: { product: data },
                       size: 1,
                     })
                   }>
                   افزودن به سبد خرید
                 </button>
               )}
-              {quantityItem(state, data.productId) > 0 && (
+              {/* {quantityItem(state, data.productId) > 0 && (
                 <span className={styles.quantity}>
                   {quantityItem(state, data.productId)}
                 </span>
@@ -117,7 +123,7 @@ const ProductDetails = ({ data }) => {
                   }>
                   <i className='fas fa-minus'></i>
                 </button>
-              )}
+              )} */}
             </div>
           </div>
         </div>

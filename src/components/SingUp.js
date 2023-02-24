@@ -12,7 +12,6 @@ import "react-toastify/dist/ReactToastify.css";
 //Functions
 import { notify } from "../helper/function";
 
-
 const SingUp = (props) => {
   const [data, setData] = useState({
     name: "",
@@ -25,7 +24,7 @@ const SingUp = (props) => {
   const [touch, setTouch] = useState({});
 
   useEffect(() => {
-    setErrors(validate(data , "signup"));
+    setErrors(validate(data, "signup"));
   }, [data]);
 
   const changeHandler = (event) => {
@@ -42,7 +41,7 @@ const SingUp = (props) => {
     event.preventDefault();
     if (!Object.keys(errors).length) {
       notify("seccus");
-      window.location.pathname ="/";
+      window.location.pathname = "/home";
     } else {
       notify("error");
       setTouch({
@@ -61,8 +60,8 @@ const SingUp = (props) => {
         <div className={styles.formBox}>
           <label>نام و نام خانوادگی</label>
           <input
-            type="text"
-            name="name"
+            type='text'
+            name='name'
             value={data.name}
             onChange={changeHandler}
             onFocus={focusHandler}
@@ -75,8 +74,8 @@ const SingUp = (props) => {
         <div className={styles.formBox}>
           <label>پست الکترونیکی</label>
           <input
-            type="text"
-            name="email"
+            type='text'
+            name='email'
             value={data.email}
             onChange={changeHandler}
             onFocus={focusHandler}
@@ -89,8 +88,8 @@ const SingUp = (props) => {
         <div className={styles.formBox}>
           <label>رمزعبور</label>
           <input
-            type="password"
-            name="password"
+            type='password'
+            name='password'
             value={data.password}
             onChange={changeHandler}
             onFocus={focusHandler}
@@ -105,8 +104,8 @@ const SingUp = (props) => {
         <div className={styles.formBox}>
           <label>تکرار رمزعبور</label>
           <input
-            type="password"
-            name="confirmPassword"
+            type='password'
+            name='confirmPassword'
             value={data.confirmPassword}
             onChange={changeHandler}
             onFocus={focusHandler}
@@ -122,21 +121,22 @@ const SingUp = (props) => {
         </div>
         <div className={styles.formBox}>
           <div className={styles.checkeboxContainer}>
-            
             <input
-              type="checkbox"
-              name="isAccepted"
+              type='checkbox'
+              name='isAccepted'
               value={data.isAccepted}
               onFocus={focusHandler}
               onChange={changeHandler}
-              id="accepted"
+              id='accepted'
               className={
                 errors.isAccepted && touch.isAccepted
                   ? styles.unValidate
                   : styles.validate
               }
             />
-            <label htmlFor="accepted">تمامی قوانین و مقررات را قبول دارم.</label>
+            <label htmlFor='accepted'>
+              تمامی قوانین و مقررات را قبول دارم.
+            </label>
           </div>
           {errors.isAccepted && touch.isAccepted && (
             <span>{errors.isAccepted}</span>
@@ -144,7 +144,7 @@ const SingUp = (props) => {
         </div>
         <div className={styles.formButtons}>
           <button>ثبت نام</button>
-          <Link to="/login">ورود</Link>
+          <Link to='/'>ورود</Link>
         </div>
       </form>
       <ToastContainer />

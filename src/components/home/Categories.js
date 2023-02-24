@@ -7,7 +7,7 @@ import noImage from "../../assets/img/no-image.jpeg";
 //Styles
 import styles from "./Categories.module.css";
 
-const BASE_URL = "http://5.202.179.236:8282/api/PolProductGroupsNo/get";
+const BASE_URL = "http://77.238.123.10:12367/api/PolProductGroupsNo/get";
 
 const Categories = () => {
   const [categories, setCategories] = React.useState([]);
@@ -20,8 +20,7 @@ const Categories = () => {
         url: BASE_URL,
         headers: {
           apptype: "b2b",
-          authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIxIiwidXNlcm5hbWUiOiJlYTM0NTFjNC1lYWZiLTRlMDUtODYyNS00ODc0NWU4NWFiZDMiLCJ1c2Vya2V5IjoiMDkxMjA1MzIxMjYiLCJhbGlhcyI6Itiz2b7Zh9ixINiz2b7Zh9ixIiwibmJmIjoxNjc1Njc2NTMzLCJleHAiOjE2NzgwOTU3MzMsImlhdCI6MTY3NTY3NjUzMywiaXNzIjoiaHR0cDovLzc3LjIzOC4xMjMuMTA6MTIzNjciLCJhdWQiOiJhcHBVc2VyIn0.IPYe0bHD09oRS5uaLqVeN_Ejsx2KCOlGyU-hrZ0-Fr0",
+          authorization: "Bearer " + localStorage.getItem("token"),
           language: "fa",
           connection: "keep-alive",
           "x-requested-with": "XMLHttpRequest",
@@ -46,7 +45,7 @@ const Categories = () => {
           setIndex2(index2);
         }}>
         {category.mediumURL ? (
-          <img src={"http://5.202.179.236:8282" + category.mediumURL} />
+          <img src={"http://77.238.123.10:12367" + category.mediumURL} />
         ) : (
           <img src={noImage} />
         )}

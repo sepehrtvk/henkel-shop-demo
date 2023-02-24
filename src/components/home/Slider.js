@@ -9,14 +9,9 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-//images slider
-import image1 from "../../assets/img/1.jpg";
-import image2 from "../../assets/img/2.jpg";
-import image3 from "../../assets/img/3.jpg";
-
 //Styles
 import styles from "./Slider.module.css";
-const BASE_URL = "http://5.202.179.236:8282/api/PolBannerApp/GetActiveBanners";
+const BASE_URL = "http://77.238.123.10:12367/api/PolBannerApp/GetActiveBanners";
 
 const Slider = () => {
   const [banners, setbanners] = React.useState([]);
@@ -28,8 +23,7 @@ const Slider = () => {
         url: BASE_URL,
         headers: {
           apptype: "b2b",
-          authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIxIiwidXNlcm5hbWUiOiJlYTM0NTFjNC1lYWZiLTRlMDUtODYyNS00ODc0NWU4NWFiZDMiLCJ1c2Vya2V5IjoiMDkxMjA1MzIxMjYiLCJhbGlhcyI6Itiz2b7Zh9ixINiz2b7Zh9ixIiwibmJmIjoxNjc1Njc2NTMzLCJleHAiOjE2NzgwOTU3MzMsImlhdCI6MTY3NTY3NjUzMywiaXNzIjoiaHR0cDovLzc3LjIzOC4xMjMuMTA6MTIzNjciLCJhdWQiOiJhcHBVc2VyIn0.IPYe0bHD09oRS5uaLqVeN_Ejsx2KCOlGyU-hrZ0-Fr0",
+          authorization: "Bearer " + localStorage.getItem("token"),
           language: "fa",
           connection: "keep-alive",
           "x-requested-with": "XMLHttpRequest",
@@ -60,11 +54,14 @@ const Slider = () => {
         <SwiperSlide>
           <div style={{ display: "flex", justifyContent: "center" }}>
             <img
-              src={"http://5.202.179.236:8282/" + banner.mediumURL}
+              src={"http://77.238.123.10:12367/" + banner.mediumURL}
               className={styles.image}
               alt='slider'
             />
           </div>
+          <p style={{ textAlign: "center", marginTop: "10px" }}>
+            {banner.title}
+          </p>
         </SwiperSlide>
       ))}
     </Swiper>

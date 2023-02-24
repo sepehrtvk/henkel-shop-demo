@@ -55,7 +55,7 @@ const BottomFooter = () => {
       </div>
       <div className={styles.copyRight}>
         <div className='container'>
-          <p>تمامی حقوق این وب سایت برای شرکت پاک وش محفوظ است.</p>
+          <p>تمامی حقوق این وب سایت برای شرکت ورانگر محفوظ است.</p>
         </div>
       </div>
     </div>

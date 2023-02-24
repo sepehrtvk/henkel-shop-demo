@@ -13,7 +13,7 @@ const Address = () => {
         <i className='fas fa-phone'></i> شماره تماس : 09123456789
       </p>
       <p>
-        <i className='fas fa-envelope'></i>ایمیل : info.henkel@yahoo.com
+        <i className='fas fa-envelope'></i>ایمیل : info.varanegar@yahoo.com
       </p>
     </div>
   );

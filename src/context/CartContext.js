@@ -11,12 +11,9 @@ const initialState = {
 };
 
 const sumProduct = (items) => {
-  const itemCounter = items.reduce(
-    (total, product) => total + product.quantity,
-    0
-  );
+  const itemCounter = items.reduce((total, product) => total + product.qty, 0);
   const total = items.reduce(
-    (total, product) => total + product.quantity * product.finalPrice,
+    (total, product) => total + product.qty * product.product.finalPrice,
     0
   );
   return { itemCounter, total };
@@ -27,12 +24,31 @@ const cartReducer = (state, action) => {
     case "ADD_ITEM":
       if (
         !state.selectedItem.find(
-          (item) => item.productId === action.payload.productId
+          (item) => item.product.productId === action.payload.product.productId
         )
       ) {
         state.selectedItem.push({
           ...action.payload,
-          quantity: 1,
+          qty: 1,
+          size: action.size,
+        });
+      }
+      return {
+        ...state,
+        selectedItem: [...state.selectedItem],
+        ...sumProduct(state.selectedItem),
+        checkOut: false,
+      };
+
+    case "ADD_QTY":
+      if (
+        !state.selectedItem.find(
+          (item) => item.product.productId === action.payload.product.productId
+        )
+      ) {
+        state.selectedItem.push({
+          ...action.payload,
+          qty: action.payload.qty,
           size: action.size,
         });
       }
@@ -45,7 +61,7 @@ const cartReducer = (state, action) => {
 
     case "REMOVE_ITEM":
       const newSelectedItem = state.selectedItem.filter(
-        (item) => item.productId !== action.payload.productId
+        (item) => item.product.productId !== action.payload.product.productId
       );
       return {
         ...state,
@@ -55,9 +71,9 @@ const cartReducer = (state, action) => {
 
     case "PLUS_ONE":
       const indexItem1 = state.selectedItem.findIndex(
-        (item) => item.productId === action.payload.productId
+        (item) => item.product.productId === action.payload.product.productId
       );
-      state.selectedItem[indexItem1].quantity++;
+      state.selectedItem[indexItem1].qty++;
       return {
         ...state,
         ...sumProduct(state.selectedItem),
@@ -65,9 +81,9 @@ const cartReducer = (state, action) => {
 
     case "MINUS_ONE":
       const indexItem2 = state.selectedItem.findIndex(
-        (item) => item.productId === action.payload.productId
+        (item) => item.product.productId === action.payload.product.productId
       );
-      state.selectedItem[indexItem2].quantity--;
+      state.selectedItem[indexItem2].qty--;
       return {
         ...state,
         ...sumProduct(state.selectedItem),

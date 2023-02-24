@@ -2,17 +2,19 @@ import { toast } from "react-toastify";
 
 const quantityItem = (state, id) => {
   const indexItem = state.selectedItem.findIndex(
-    (item) => item.productId === id
+    (item) => item.product.productId === id
   );
   if (indexItem === -1) {
-    return false;
+    return 0;
   } else {
-    return state.selectedItem[indexItem].quantity;
+    return state.selectedItem[indexItem].qty;
   }
 };
 
 const isInCart = (state, id) => {
-  const result = !!state.selectedItem.find((item) => item.productId === id);
+  const result = !!state.selectedItem.find(
+    (item) => item.product.productId === id
+  );
   return result;
 };
 
@@ -31,7 +33,7 @@ const rateHandler = (rateCount) => {
   }
 };
 
-const notify = (type) => {
+const notify = (type, data) => {
   if (type === "seccus") {
     toast.success("شما با موفیقت وارد شدید", {
       position: "top-right",
@@ -53,7 +55,7 @@ const notify = (type) => {
       progress: undefined,
     });
   } else {
-    toast.error("ورود شما ناموفق بود لطفا دوباره تلاش کنید", {
+    toast.error(data ? data : "ورود شما ناموفق بود لطفا دوباره تلاش کنید", {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,

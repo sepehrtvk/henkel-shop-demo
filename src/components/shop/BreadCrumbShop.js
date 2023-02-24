@@ -10,7 +10,7 @@ const BreadCrumbShop = ({ filtered, filterHandler }) => {
     <div className={styles.container}>
       <div className={styles.breadcrumb}>
         <div className={styles.routes}>
-          <Link to='/'>پاک وش /</Link>
+          <Link to='/'>ورانگر /</Link>
           <span className={styles.pages}>فروشگاه</span>
         </div>
         <div className={styles.sort}>
