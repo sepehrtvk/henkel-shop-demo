@@ -17,7 +17,7 @@ const HomePage = () => {
       <Categories />
       <SpecialOffers />
       <LatestProducts />
-      <BestSellingProducts />
+      {/* <BestSellingProducts /> */}
       <OurBrands />
       {/* <ImagesBox /> */}
       {/* <BlogsCard /> */}

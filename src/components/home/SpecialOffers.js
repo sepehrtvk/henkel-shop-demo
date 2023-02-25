@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 //Swiper
 import { Navigation, Pagination, Autoplay } from "swiper";
@@ -16,14 +16,31 @@ import { ProductsContext } from "../../context/ProductsContextProvider";
 //Components
 import ProductCard from "../shared/ProductCard";
 import AuthContext from "../../context/auth-context";
+import { productsAPI } from "../../services/api";
+import { notify } from "../../helper/function";
 
 const SpecialOffers = () => {
   const data = useContext(ProductsContext);
-
   const authCtx = useContext(AuthContext);
+  const [specialPro, setspecialPro] = useState([]);
+
+  useEffect(() => {
+    productsAPI({
+      skip: 0,
+      take: 10,
+      showInMainPage: true,
+      isSpecial: true,
+    })
+      .then((res) => {
+        setspecialPro(res);
+      })
+      .catch((err) => {
+        notify("error", err.response.data.message);
+      });
+  }, []);
+
   if (!authCtx.isLoggedIn) return null;
 
-  const specialPro = data;
   return (
     <div className='carousel-slider'>
       <div className='title-homepage'>
@@ -53,11 +70,12 @@ const SpecialOffers = () => {
         autoplay={true}
         loop={true}
         rtl={"true"}>
-        {specialPro.map((product) => (
-          <SwiperSlide key={product.id}>
-            <ProductCard data={product} />
-          </SwiperSlide>
-        ))}
+        {specialPro &&
+          specialPro.map((product) => (
+            <SwiperSlide key={product.id}>
+              <ProductCard data={product} />
+            </SwiperSlide>
+          ))}
       </Swiper>
     </div>
   );

@@ -31,9 +31,10 @@ const Cart = () => {
         CustomerId: localStorage.getItem("CustomerId"),
         CustomerGroupId: localStorage.getItem("CustomerGroupId"),
       });
-      response.data[0].items.map((item) => {
-        if (item.qty > 0) dispatch({ type: "ADD_QTY", payload: item });
-      });
+      if (response.data.length > 0)
+        response.data[0].items.map((item) => {
+          if (item.qty > 0) dispatch({ type: "ADD_QTY", payload: item });
+        });
       setIsLoading(false);
     };
     if (authCtx.isLoggedIn) getBasketFunction();

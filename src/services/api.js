@@ -1,10 +1,8 @@
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 
-const BASE_URL = "http://77.238.123.10:12367/api/PolProductsNo/get";
-
-const productsAPI = async () => {
-  const specialUrl = BASE_URL + "?skip=0&take=10&showInMainPage=true";
+const productsAPI = async (params) => {
+  const specialUrl = "http://77.238.123.10:12367/api/PolProductsNo/get";
 
   const config = {
     method: "get",
@@ -16,6 +14,7 @@ const productsAPI = async () => {
       connection: "keep-alive",
       "x-requested-with": "XMLHttpRequest",
     },
+    params: params,
   };
   const response = await axios(config);
   return response.data;

@@ -1,15 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 //Swiper
 import { Navigation, Pagination, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import { notify } from "../../helper/function";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-
+import { productsAPI } from "../../services/api";
 //Context
 import { ProductsContext } from "../../context/ProductsContextProvider";
 
@@ -17,9 +17,21 @@ import { ProductsContext } from "../../context/ProductsContextProvider";
 import ProductCard from "../shared/ProductCard";
 
 const LatestProducts = () => {
-  const data = useContext(ProductsContext);
-  data.sort((a, b) => parseFloat(b.date) - parseFloat(a.date));
-  const newData = data.slice(0, 8);
+  const [lastproducts, setlastproducts] = useState([]);
+
+  useEffect(() => {
+    productsAPI({
+      skip: 0,
+      take: 10,
+      showInMainPage: false,
+    })
+      .then((res) => {
+        setlastproducts(res);
+      })
+      .catch((err) => {
+        notify("error", err.response.data.message);
+      });
+  }, []);
   return (
     <div className='carousel-slider'>
       <div className='title-homepage'>
@@ -49,11 +61,12 @@ const LatestProducts = () => {
         autoplay={true}
         loop={true}
         rtl={"true"}>
-        {newData.map((product) => (
-          <SwiperSlide key={product.id}>
-            <ProductCard data={product} />
-          </SwiperSlide>
-        ))}
+        {lastproducts &&
+          lastproducts.map((product) => (
+            <SwiperSlide key={product.id}>
+              <ProductCard data={product} />
+            </SwiperSlide>
+          ))}
       </Swiper>
     </div>
   );
