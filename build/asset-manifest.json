@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/static/css/main.3ab32a90.css",
+    "main.js": "/static/js/main.3f41dc0c.js",
+    "static/media/logo.png": "/static/media/logo.78c3d0fba06540cb8d1f.png",
+    "static/media/YekanBakhMedium.woff": "/static/media/YekanBakhMedium.f5c7fb3c6a1ab681b5b2.woff",
+    "static/media/imagebox1.jpg": "/static/media/imagebox1.62fc1f80bc0cd48e3040.jpg",
+    "static/media/imagebox4.jpg": "/static/media/imagebox4.f11f850757d976c9a6b9.jpg",
+    "static/media/imagebox3.jpg": "/static/media/imagebox3.b263265422ac5c73dd8a.jpg",
+    "static/media/imagebox2.jpg": "/static/media/imagebox2.fabaea835ad795f74116.jpg",
+    "static/media/iranyekanwebmediumfanum.woff": "/static/media/iranyekanwebmediumfanum.9c78b97ef5b1f81922e9.woff",
+    "static/media/empty-cart.svg": "/static/media/empty-cart.b56f75f4a68604abb8b40c8a8929d0ee.svg",
+    "static/media/enamad.png": "/static/media/enamad.5363af079bf7a9281aed.png",
+    "static/media/adidas.svg": "/static/media/adidas.0335f882bca1cddb7a14b2181eb3daa7.svg",
+    "static/media/puma.svg": "/static/media/puma.f8366daf8b3d2e88db6227330a3a9c09.svg",
+    "static/media/zara.svg": "/static/media/zara.4a5bf47bbe600f97efd79d81891a65a9.svg",
+    "static/media/nike.svg": "/static/media/nike.811d61411ea901e4122044c55186acf3.svg",
+    "index.html": "/index.html",
+    "static/media/shopping-bag.svg": "/static/media/shopping-bag.d3e1addf6fc91f2aa610d95f2f9f4143.svg",
+    "static/media/cross.svg": "/static/media/cross.c2ec146f3e728d30dff3a67a6c61ace2.svg",
+    "static/media/search.svg": "/static/media/search.5de686794f886ef70690fd33fc02247c.svg",
+    "static/media/menu-burger.svg": "/static/media/menu-burger.60466b48851c6f3c8271284527fad27f.svg",
+    "main.3ab32a90.css.map": "/static/css/main.3ab32a90.css.map",
+    "main.3f41dc0c.js.map": "/static/js/main.3f41dc0c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3ab32a90.css",
+    "static/js/main.3f41dc0c.js"
+  ]
+}
