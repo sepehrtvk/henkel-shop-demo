@@ -23,7 +23,7 @@ const LatestProducts = () => {
     productsAPI({
       skip: 0,
       take: 10,
-      showInMainPage: false,
+      showInMainPage: true,
     })
       .then((res) => {
         setlastproducts(res);
@@ -38,36 +38,43 @@ const LatestProducts = () => {
         <h2>جدیدترین محصولات</h2>
         <small>Latest Products</small>
       </div>
-      <Swiper
-        breakpoints={{
-          990: {
-            width: 990,
-            slidesPerView: 3,
-          },
-          768: {
-            width: 768,
-            slidesPerView: 2,
-          },
-          360: {
-            width: 350,
-            slidesPerView: 1.3,
-            spaceBetween: 20,
-          },
-        }}
-        modules={[Autoplay, Navigation, Pagination]}
-        spaceBetween={40}
-        slidesPerView={4}
-        navigation
-        autoplay={true}
-        loop={true}
-        rtl={"true"}>
-        {lastproducts &&
-          lastproducts.map((product) => (
-            <SwiperSlide key={product.id}>
-              <ProductCard data={product} />
-            </SwiperSlide>
-          ))}
-      </Swiper>
+      {!lastproducts && (
+        <p style={{ textAlign: "center", color: "red" }}>
+          هیج موردی برای نمایش یافت نشد.
+        </p>
+      )}
+      {lastproducts && (
+        <Swiper
+          breakpoints={{
+            990: {
+              width: 990,
+              slidesPerView: 3,
+            },
+            768: {
+              width: 768,
+              slidesPerView: 2,
+            },
+            360: {
+              width: 350,
+              slidesPerView: 1.3,
+              spaceBetween: 20,
+            },
+          }}
+          modules={[Autoplay, Navigation, Pagination]}
+          spaceBetween={40}
+          slidesPerView={4}
+          navigation
+          autoplay={true}
+          loop={true}
+          rtl={"true"}>
+          {lastproducts &&
+            lastproducts.map((product) => (
+              <SwiperSlide key={product.id}>
+                <ProductCard data={product} />
+              </SwiperSlide>
+            ))}
+        </Swiper>
+      )}
     </div>
   );
 };

@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { checkout } from "../basket/BasketService";
+import Loading from "../shared/Loading";
 
 //Styles
 import styles from "./CartPay.module.css";
 
 const CartPay = ({ data, dispatch, notify, nextPage }) => {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+
+  if (isLoading) return <Loading />;
 
   return (
     <div className={styles.pay}>
@@ -90,16 +94,29 @@ const CartPay = ({ data, dispatch, notify, nextPage }) => {
         <button
           className={styles.payBtn}
           onClick={() => {
+            setIsLoading(true);
             checkout({
               CustomerId: localStorage.getItem("CustomerId"),
               CustomerGroupId: localStorage.getItem("CustomerGroupId"),
             })
               .then((res) => {
                 dispatch({ type: "CHECKED_OUT" });
+                setIsLoading(false);
+
                 notify("checkout");
+
+                setTimeout(() => {
+                  navigate("/cart");
+                }, 3000);
               })
               .catch((err) => {
                 notify("error", err.response.data.message);
+                let errMs = "";
+                err.response.data.errors.map((eror) => {
+                  errMs = errMs + " " + eror.errorMessage;
+                });
+                notify("error", errMs);
+                setIsLoading(false);
               });
           }}>
           ارسال سفارش

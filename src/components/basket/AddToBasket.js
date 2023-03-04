@@ -12,7 +12,7 @@ const AddToBasket = ({ state, dispatch, productData }) => {
     const postBasketFunction = async () => {
       setloading(true);
       const response = await postBasket({
-        items: state.selectedItem,
+        items: getBasketItems(),
         CustomerId: localStorage.getItem("CustomerId"),
         CustomerGroupId: localStorage.getItem("CustomerGroupId"),
       });
@@ -27,6 +27,27 @@ const AddToBasket = ({ state, dispatch, productData }) => {
 
     postBasketFunction();
   }, [quantityItem(state, productData.productId)]);
+
+  const getBasketItems = () => {
+    const items = [];
+
+    state.selectedItem.map((item) => {
+      const itemBas = {
+        product: item.product,
+        qty: item.qty,
+        isPrize: item.product.isPrize,
+        unitInfo: {
+          id: item.product.unitId,
+          title: item.product.unitName,
+          convertFactor: item.product.packQty,
+        },
+      };
+
+      items.push(itemBas);
+    });
+
+    return items;
+  };
 
   return (
     <div className={styles.plusMinusProduct}>

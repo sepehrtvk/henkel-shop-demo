@@ -15,7 +15,7 @@ const ProductCard = ({ data }) => {
       <div className={styles.cardImage}>
         {data.image && (
           <img
-            src={"http://77.238.123.10:12367" + data.image}
+            src={"http://5.202.179.236:8282" + data.image}
             alt='photo'
             height={"250px"}
           />

@@ -16,9 +16,9 @@ const CartProducts = ({ productData, dispatch, state, isPreview, preview }) => {
           {productData.image && (
             <img
               src={
-                productData.image.includes("http://77.238.123.10:12367")
+                productData.image.includes("http://5.202.179.236:8282")
                   ? productData.image
-                  : "http://77.238.123.10:12367" + productData.image
+                  : "http://5.202.179.236:8282" + productData.image
               }
               alt={productData.name}
             />

@@ -11,7 +11,7 @@ import "swiper/css/pagination";
 
 //Styles
 import styles from "./Slider.module.css";
-const BASE_URL = "http://77.238.123.10:12367/api/PolBannerApp/GetActiveBanners";
+const BASE_URL = "http://5.202.179.236:8282/api/PolBannerApp/GetActiveBanners";
 
 const Slider = () => {
   const [banners, setbanners] = React.useState([]);
@@ -54,7 +54,7 @@ const Slider = () => {
         <SwiperSlide>
           <div style={{ display: "flex", justifyContent: "center" }}>
             <img
-              src={"http://77.238.123.10:12367/" + banner.mediumURL}
+              src={"http://5.202.179.236:8282/" + banner.mediumURL}
               className={styles.image}
               alt='slider'
             />

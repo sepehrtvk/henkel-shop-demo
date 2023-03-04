@@ -28,7 +28,6 @@ const SpecialOffers = () => {
     productsAPI({
       skip: 0,
       take: 10,
-      showInMainPage: true,
       isSpecial: true,
     })
       .then((res) => {
@@ -47,36 +46,43 @@ const SpecialOffers = () => {
         <h2>پیشنهادات ویژه</h2>
         <small>Special offers</small>
       </div>
-      <Swiper
-        breakpoints={{
-          990: {
-            width: 990,
-            slidesPerView: 3,
-          },
-          768: {
-            width: 768,
-            slidesPerView: 2,
-          },
-          360: {
-            width: 350,
-            slidesPerView: 1.3,
-            spaceBetween: 20,
-          },
-        }}
-        modules={[Autoplay, Navigation, Pagination]}
-        spaceBetween={40}
-        slidesPerView={4}
-        navigation
-        autoplay={true}
-        loop={true}
-        rtl={"true"}>
-        {specialPro &&
-          specialPro.map((product) => (
-            <SwiperSlide key={product.id}>
-              <ProductCard data={product} />
-            </SwiperSlide>
-          ))}
-      </Swiper>
+      {!specialPro && (
+        <p style={{ textAlign: "center", color: "red" }}>
+          هیج موردی برای نمایش یافت نشد.
+        </p>
+      )}
+      {specialPro && (
+        <Swiper
+          breakpoints={{
+            990: {
+              width: 990,
+              slidesPerView: 3,
+            },
+            768: {
+              width: 768,
+              slidesPerView: 2,
+            },
+            360: {
+              width: 350,
+              slidesPerView: 1.3,
+              spaceBetween: 20,
+            },
+          }}
+          modules={[Autoplay, Navigation, Pagination]}
+          spaceBetween={40}
+          slidesPerView={4}
+          navigation
+          autoplay={true}
+          loop={true}
+          rtl={"true"}>
+          {specialPro &&
+            specialPro.map((product) => (
+              <SwiperSlide key={product.id}>
+                <ProductCard data={product} />
+              </SwiperSlide>
+            ))}
+        </Swiper>
+      )}
     </div>
   );
 };

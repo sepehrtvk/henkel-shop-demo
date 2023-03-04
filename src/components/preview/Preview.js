@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 //Styles
 import styles from "./Preview.module.css";
@@ -21,6 +22,7 @@ const Preview = () => {
   const { state, dispatch } = useContext(CartContextProvider);
   const [previewItems, setPreviewItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getBasketFunction = () => {
@@ -48,6 +50,9 @@ const Preview = () => {
   }, []);
 
   if (isLoading) return <Loading />;
+  if (!previewItems.length) {
+    return <div>خالی است. </div>;
+  }
   return (
     <div className='container'>
       <div className={styles.cartPage}>

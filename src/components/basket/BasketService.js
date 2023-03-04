@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const postBasket = async (data) => {
-  const BASE_URL = "http://77.238.123.10:12367/api/BasketPolNo/Post";
+  const BASE_URL = "http://5.202.179.236:8282/api/BasketPolNo/Post";
   const config = {
     method: "post",
     url: BASE_URL,
@@ -18,7 +18,7 @@ const postBasket = async (data) => {
 };
 
 const getBasket = async (params) => {
-  const BASE_URL = "http://77.238.123.10:12367/api/BasketPolNo/Get";
+  const BASE_URL = "http://5.202.179.236:8282/api/BasketPolNo/Get";
   const config = {
     method: "get",
     url: BASE_URL,
@@ -36,7 +36,7 @@ const getBasket = async (params) => {
 
 const getBasketFullData = async (params) => {
   const BASE_URL =
-    "http://77.238.123.10:12367/api/BasketPolNo/GetBasketFullData";
+    "http://5.202.179.236:8282/api/BasketPolNo/GetBasketFullData";
   const config = {
     method: "get",
     url: BASE_URL,
@@ -53,7 +53,7 @@ const getBasketFullData = async (params) => {
 };
 
 const checkout = async (body) => {
-  const BASE_URL = "http://77.238.123.10:12367/api/BasketPolNo/CheckOut";
+  const BASE_URL = "http://5.202.179.236:8282/api/BasketPolNo/CheckOut";
   const config = {
     method: "post",
     url: BASE_URL,

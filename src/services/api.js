@@ -2,7 +2,7 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 
 const productsAPI = async (params) => {
-  const specialUrl = "http://77.238.123.10:12367/api/PolProductsNo/get";
+  const specialUrl = "http://5.202.179.236:8282/api/PolProductsNo/get";
 
   const config = {
     method: "get",
@@ -14,14 +14,14 @@ const productsAPI = async (params) => {
       connection: "keep-alive",
       "x-requested-with": "XMLHttpRequest",
     },
-    params: params,
+    params: { ...params, CustomerId: localStorage.getItem("CustomerId") },
   };
   const response = await axios(config);
   return response.data;
 };
 
 const loginByCode = async (body) => {
-  const loginUrl = "http://77.238.123.10:12367/api/poluser/signin";
+  const loginUrl = "http://5.202.179.236:8282/api/poluser/signin";
 
   const config = {
     method: "post",
@@ -38,7 +38,7 @@ const loginByCode = async (body) => {
   return response.data;
 };
 const requestCode = async (body) => {
-  const codeUrl = "http://77.238.123.10:12367/api/poluser/requestcode";
+  const codeUrl = "http://5.202.179.236:8282/api/poluser/requestcode";
 
   const config = {
     method: "post",
@@ -56,7 +56,7 @@ const requestCode = async (body) => {
 };
 
 const getUserInfo = async () => {
-  const codeUrl = "http://77.238.123.10:12367/api/poluser/userinfo";
+  const codeUrl = "http://5.202.179.236:8282/api/poluser/userinfo";
   const userId = jwt_decode(localStorage.getItem("token"));
   const config = {
     method: "get",

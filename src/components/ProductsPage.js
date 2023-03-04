@@ -13,21 +13,23 @@ import Loading from "./shared/Loading";
 import RelatedProduct from "./product/RelatedProduct";
 
 const ProductsPage = () => {
-  const [products, setProducts] = useState([]);
+  const [product, setProduct] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  const id = useParams().id;
 
   useEffect(() => {
     const fetchAPI = async () => {
-      setProducts(await productsAPI());
+      setIsLoading(true);
+      const productOne = await productsAPI({ productid: id });
+      setProduct(productOne[0]);
+      setIsLoading(false);
     };
     fetchAPI();
   }, []);
 
-  const id = useParams().id;
-  const product = products.filter((product) => product.productId == id)[0];
-  // const relatedPro = products.filter(
-  //   (item) => item.category === product.category && item.id !== product.id
-  // );
-  return product ? (
+  if (isLoading || !product.productId) return <Loading />;
+
+  return (
     <div className='products-page'>
       <div className='container'>
         <BreadCrumb
@@ -41,8 +43,6 @@ const ProductsPage = () => {
         {/* <RelatedProduct data={relatedPro} /> */}
       </div>
     </div>
-  ) : (
-    <Loading />
   );
 };
 
